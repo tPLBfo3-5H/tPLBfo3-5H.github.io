@@ -1,0 +1,36 @@
+{
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "Request",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "Response"
+    },
+    {
+      "name": "DatabaseIn",
+      "databaseName": "my-database",
+      "collectionName": "my-container",
+      "connectionStringSetting": "anoeltestdb_DOCUMENTDB",
+      "sqlQuery": "SELECT * FROM c WHERE c.id = \"1\"",
+      "direction": "in",
+      "type": "cosmosDB"
+    },
+    {
+      "name": "DatabaseOut",
+      "direction": "out",
+      "type": "cosmosDB",
+      "connectionStringSetting": "anoeltestdb_DOCUMENTDB",
+      "databaseName": "my-database",
+      "collectionName": "my-container"
+    }
+  ]
+}
