@@ -24,3 +24,9 @@ jobs:
       with:
         inlineScript: |
            az cdn endpoint purge --content-paths  "/*" --profile-name "test-site" --name "anoeltest" --resource-group "test-rg" --no-wait
+           
+  # Azure logout
+    - name: logout
+      run: |
+            az logout
+      if: always()
