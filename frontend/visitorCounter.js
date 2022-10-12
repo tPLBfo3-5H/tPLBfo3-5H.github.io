@@ -13,7 +13,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       })
       .then(response => {
         count = response.count;
-        console.log("You are visitor number - " + count);
+        console.log("Fetch to function succeeded.");
         document.getElementById('counter').innerText = count;
       }).catch(function (error) {
         console.log(error);
