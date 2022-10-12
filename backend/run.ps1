@@ -28,7 +28,7 @@ else {
 
     $responseJson = ConvertTo-Json -InputObject $responseObject
  
-    Push-OutputBinding -Name CosmosOut -Value @{
+    Push-OutputBinding -Name DatabaseOut -Value @{
         id = $DatabaseIn.id
         visitorCount = $visitorCount
     }
