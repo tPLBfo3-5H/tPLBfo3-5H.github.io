@@ -12,7 +12,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         return response.json()
       })
       .then(response => {
-        count = response;
+        count = response.count;
         console.log("You are visitor number - " + count);
         document.getElementById('counter').innerText = count;
       }).catch(function (error) {
