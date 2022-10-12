@@ -12,7 +12,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         return response.json()
       })
       .then(response => {
-        count = response.VisitorCount;
+        count = response;
         console.log("Fetch to function succeeded.");
         document.getElementById('counter').innerText = count;
       }).catch(function (error) {
