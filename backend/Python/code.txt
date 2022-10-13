@@ -1,3 +1,6 @@
+http://localhost:7071/api/HttpTrigger1
+
+
 SELECT * FROM c WHERE c.id = "1"
 
 
@@ -81,3 +84,22 @@ def main(req: func.HttpRequest, DatabaseOut: func.Out[func.Document]) -> func.Ht
              "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.",
              status_code=200
         )
+
+
+
+    {
+      "name": "DatabaseIn",
+      "databaseName": "my-database",
+      "collectionName": "my-container",
+      "connectionStringSetting": "anoeltestdb_DOCUMENTDB",
+      "sqlQuery": "SELECT * FROM c WHERE c.id = \"1\"",
+      "direction": "in",
+      "type": "cosmosDB"
+    },
+    {
+      "name": "DatabaseOut",
+      "direction": "out",
+      "type": "cosmosDB",
+      "connectionStringSetting": "anoeltestdb_DOCUMENTDB",
+      "databaseName": "my-database",
+      "collectionName": "my-container"
