@@ -1,0 +1,83 @@
+SELECT * FROM c WHERE c.id = "1"
+
+
+db input
+
+import azure.functions as func
+  
+# The name of the input binding in this example is "documents", so this would need to be replaced with the actual name of the input binding dynamically.
+def main(queuemsg: func.QueueMessage, documents: func.DocumentList) -> func.Document:
+    if documents:
+        document = documents[0]
+        document['text'] = 'This was updated!'
+        return document
+
+
+
+db output
+
+import logging 
+import json 
+import azure.functions as func 
+  
+def main(req: func.HttpRequest, outputDocument: func.Out[func.Document]) -> func.HttpResponse: 
+    logging.info('Python HTTP trigger function processed a request.') 
+  
+    name = req.params.get('name') 
+    if not name: 
+        try: 
+            req_body = req.get_json() 
+        except ValueError: 
+            pass 
+        else: 
+            name = req_body.get('name') 
+
+    if name: 
+        outputDocument.set(func.Document.from_json(json.dumps({"name": "test"}))) 
+        return func.HttpResponse(f"Hello, {name}. This HTTP triggered function executed successfully.") 
+    else: 
+        return func.HttpResponse( 
+            "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.", 
+            status_code=200 
+        )
+
+
+
+
+python code
+
+
+import logging
+import json
+import azure.functions as func
+
+
+# The name of the input binding is "DatabaseIn".
+def main(queuemsg: func.QueueMessage, DatabaseIn: func.DocumentList) -> func.Document:
+    if DatabaseIn:
+        VisitorCount = DatabaseIn[0]
+        VisitorCount['text'] = 'VisitorCount has been updated'
+        return VisitorCount
+
+
+
+def main(req: func.HttpRequest, DatabaseOut: func.Out[func.Document]) -> func.HttpResponse:
+    logging.info('Python HTTP trigger function processed a request.')
+
+    name = req.params.get('name')
+    if not name:
+        try:
+            req_body = req.get_json()
+        except ValueError:
+            pass
+        else:
+            name = req_body.get('name')
+
+    if name:
+        DatabaseOut.set(func.Document.from_json(json.dumps({"name": "test"})))
+        return func.HttpResponse(f"Hello, {name}. This HTTP triggered function executed successfully.")
+    else:
+        return func.HttpResponse(
+             "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.",
+             status_code=200
+        )
