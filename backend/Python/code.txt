@@ -4,6 +4,11 @@ functionURL:    http://localhost:7071/api/HttpTrigger1
 SELECT * FROM c WHERE c.id = "1"
 
 
+queuemsg:
+
+
+
+
 db input
 
 import azure.functions as func
