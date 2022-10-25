@@ -1,0 +1,27 @@
+using namespace System.Net
+
+# Input bindings are passed in via param block.
+param($Request, $TriggerMetadata, $DatabaseIn)
+
+# Write to the Azure Functions log stream.
+Write-Host 'PowerShell HTTP trigger function processed a request'
+
+# Interact with query parameters or the body of the request.
+if (-not $DatabaseIn) { 
+    Write-Host 'VisitorCounter not found'
+
+    Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{ 
+        StatusCode = [HttpStatusCode]::NotFound 
+        Body = $DatabaseIn.Description 
+    })
+
+} else {
+
+    Write-Host "Found VisitorCounter, Description=$($DatabaseIn.Description)"
+
+    # Associate values to output bindings by calling 'Push-OutputBinding'.
+    Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{ 
+        StatusCode = [HttpStatusCode]::OK 
+        Body = $DatabaseIn.Description | ConvertTo-Json
+    }) 
+}
