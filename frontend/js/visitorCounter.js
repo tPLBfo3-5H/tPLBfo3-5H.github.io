@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   });
   
   
-  const functionApi = 'https://azure-function-resume.azurewebsites.net/api/HttpTrigger1?code=90SQnCIx4EIpPnyjOmLYNz8cGHopCUlSU4oo9Lb3zz71AzFuX9xQiA==';
+  const functionApi = 'https://anoel-azure-function-resume-ps.azurewebsites.net/api/HttpTrigger1?code=dldr_bEbzUDqP3RPyFOunN7OrcCxfKxvZBP4lu05LEvLAzFuqNwfzQ==';
   
   const getVisitCount = () => {
     let count = 7;
