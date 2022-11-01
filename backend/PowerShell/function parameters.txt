@@ -1,5 +1,0 @@
-function name:   azure-function-resume
-
-storage account:   azurefunctionresume
-
-resource group:  azurefunctionresume-rg
