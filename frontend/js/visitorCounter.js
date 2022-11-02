@@ -6,7 +6,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const functionApi = 'https://anoel-azure-function-resume-ps.azurewebsites.net/api/HttpTrigger1?code=dldr_bEbzUDqP3RPyFOunN7OrcCxfKxvZBP4lu05LEvLAzFuqNwfzQ==';
   
   const getVisitorCount = () => {
-    let count = 7;
+    let count = 1;
     fetch(functionApi)
       .then(response => {
         return response.json()
