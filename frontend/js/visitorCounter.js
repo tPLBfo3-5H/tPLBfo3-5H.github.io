@@ -12,8 +12,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
         return response.json()
       })
       .then(response => {
-        count = response.visitorCount;
-        console.log("Fetch to function succeeded.");
+        count = response;
+        console.log("Function succeeded.  You are visitor number " + count);
         document.getElementById('counter').innerText = count;
       }).catch(function (error) {
         console.log(error);
