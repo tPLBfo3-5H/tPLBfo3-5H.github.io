@@ -30,7 +30,6 @@
       "name": "DatabaseOut",
       "databaseName": "my-database",
       "collectionName": "my-container",
-      "createIfNotExists": false,
       "connectionStringSetting": "anoeltestdb_DOCUMENTDB"
     }
   ]
